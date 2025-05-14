@@ -14,7 +14,6 @@ class UserRole(str, BaseEnum):
 class User(BaseModel):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(
         String(20), unique=True, index=True, nullable=False
     )
@@ -23,6 +22,7 @@ class User(BaseModel):
     )
     password: Mapped[str] = mapped_column(String(255), nullable=False)
 
+    orders: Mapped[list["Order"]] = relationship(back_populates="user")  # NOQA
     cart_items: Mapped[list["CartItem"]] = relationship(back_populates="user")  # NOQA
     sent_messages: Mapped[list["SupportMessage"]] = relationship(  # NOQA
         back_populates="sender", foreign_keys="SupportMessage.sender_id"

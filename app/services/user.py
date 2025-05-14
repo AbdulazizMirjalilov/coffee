@@ -6,10 +6,8 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 from passlib.context import CryptContext
 from pydantic import EmailStr
-from sqlalchemy import exists
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy.sql import or_
 
 from app.core.config import settings
 from app.models.user import User
@@ -22,11 +20,10 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 http_bearer = HTTPBearer()
 
 
-async def check_user(db: AsyncSession, email: EmailStr, username: str) -> bool:
-    result = await db.execute(
-        select(exists().where(or_(User.email == email, User.username == username)))
-    )
-    return result.scalar()
+async def check_user(db: AsyncSession, email: EmailStr, username: str):
+    stmt = select(User).where((User.email == email) | (User.username == username))
+    result = await db.execute(stmt)
+    return result.scalar_one_or_none()
 
 
 def get_current_user(
