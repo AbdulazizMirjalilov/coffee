@@ -10,6 +10,11 @@ from app.models import User
 from app.services.chat import chat_endpoint
 from app.services.user import get_current_user_ws
 
+# Copyright © 2025 Abdulaziz Mirjalilov
+# This file is part of a proprietary codebase submitted for technical evaluation.
+# Unauthorized use or distribution is prohibited.
+# This code is provided for educational purposes only
+# and should not be used in production.
 APP_NAME = settings.APP_NAME
 app = FastAPI(title=APP_NAME, version=settings.APP_VERSION)
 

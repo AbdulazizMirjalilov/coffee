@@ -2,7 +2,8 @@
 name = "auth-service"
 version = "0.1.0"
 packages = [{ include = "app" }]
-description = ""
+description = "Proprietary"
+license = "MIT"
 authors = ["abdulazizmirjalilov <abdulaziz.mirjalilov@ventionteams.com>"]
 readme = "README.md"
 

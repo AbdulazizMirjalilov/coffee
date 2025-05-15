@@ -1,4 +1,13 @@
-# Knowledge Management Platform
+# Coffee shop
+
+## ⚠️ License and Usage
+
+This project is shared exclusively for a job application and technical evaluation.
+
+All source code and content are © 2025 Abdulaziz Mirjalilov.
+No permission is granted to reuse, modify, or redistribute this code without written consent.
+
+# This code is provided for job application and technical purposes only and should not be used in production.
 
 ## Overview
 
@@ -13,8 +22,8 @@
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://gitlab.com/knowledge-management-platform1/backend/be-template.git
-cd be-template
+git clone https://github.com/AbdulazizMirjalilov/coffee.git
+cd coffee
 ```
 
 ### Step 2: Install Dependencies
