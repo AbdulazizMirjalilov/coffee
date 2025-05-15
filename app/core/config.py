@@ -84,10 +84,6 @@ class EmailSettings(BaseSettings):
     EMAIL_EXPIRE_HOURS: int = config("EMAIL_EXPIRE_HOURS", default=1)
 
 
-class ServerUrlSettings(BaseSettings):
-    PROFILE_SERVICE_URL: str = config("PROFILE_SERVICE_URL")
-
-
 class Settings(
     AppSettings,
     PostgresSettings,
@@ -97,8 +93,7 @@ class Settings(
     RedisQueueSettings,
     CelerySettings,
     EnvironmentSettings,
-    EmailSettings,
-    ServerUrlSettings,
+    EmailSettings
 ):
     pass
 

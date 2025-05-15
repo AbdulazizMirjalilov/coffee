@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 
 from sqlalchemy import ForeignKey, Text
@@ -9,8 +10,8 @@ from app.base.base_model import BaseModel
 class SupportMessage(BaseModel):
     __tablename__ = "support_messages"
 
-    sender_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    receiver_id: Mapped[int | None] = mapped_column(
+    sender_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    receiver_id: Mapped[uuid.UUID | None] = mapped_column(
         ForeignKey("users.id"), nullable=True
     )
     message: Mapped[str] = mapped_column(Text, nullable=False)

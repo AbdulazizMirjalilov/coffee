@@ -1,3 +1,4 @@
+import uuid
 from enum import Enum as BaseEnum
 
 from sqlalchemy import Enum, ForeignKey
@@ -16,7 +17,7 @@ class OrderStatus(str, BaseEnum):
 class Order(BaseModel):
     __tablename__ = "orders"
 
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
 
     total_price: Mapped[float] = mapped_column(nullable=False)
 

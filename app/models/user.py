@@ -25,10 +25,14 @@ class User(BaseModel):
     orders: Mapped[list["Order"]] = relationship(back_populates="user")  # NOQA
     cart_items: Mapped[list["CartItem"]] = relationship(back_populates="user")  # NOQA
     sent_messages: Mapped[list["SupportMessage"]] = relationship(  # NOQA
-        back_populates="sender", foreign_keys="SupportMessage.sender_id"
+        "SupportMessage",
+        foreign_keys="[SupportMessage.sender_id]",
+        back_populates="sender",
     )
     received_messages: Mapped[list["SupportMessage"]] = relationship(  # NOQA
-        back_populates="receiver", foreign_keys="SupportMessage.receiver_id"
+        "SupportMessage",
+        foreign_keys="[SupportMessage.receiver_id]",
+        back_populates="receiver",
     )
 
     is_verified: Mapped[bool] = mapped_column(Boolean, default=False)

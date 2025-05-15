@@ -20,7 +20,7 @@ from app.services.security import (
     verify_password,
 )
 from app.services.user import check_user, get_current_user
-from app.tasks import create_profile, send_email_task
+from app.tasks import send_email_task
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -69,8 +69,6 @@ async def verify_user(
         )
     await redis_service.delete(verification_code)
     user_id = await create_user_query(db, data)
-
-    create_profile.delay(user_id)
 
     tokens = await auth_token_generate(user_id)
     return BaseResponse(
