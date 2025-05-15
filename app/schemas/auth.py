@@ -7,7 +7,7 @@ class AuthToken(BaseModel):
 
 
 class AuthLogin(BaseModel):
-    email: str
+    email: EmailStr
     password: str
 
 

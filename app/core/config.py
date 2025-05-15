@@ -93,7 +93,7 @@ class Settings(
     RedisQueueSettings,
     CelerySettings,
     EnvironmentSettings,
-    EmailSettings
+    EmailSettings,
 ):
     pass
 

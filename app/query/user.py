@@ -1,5 +1,6 @@
 from uuid import UUID
 
+from pydantic import EmailStr
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,6 +19,6 @@ async def create_user_query(db: AsyncSession, data: dict) -> UUID:
     return user.id
 
 
-async def get_user_by_email_query(db: AsyncSession, email: str):
+async def get_user_by_email_query(db: AsyncSession, email: EmailStr):
     data = await db.execute(select(User).where(User.email == email))
     return data.scalar()

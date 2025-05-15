@@ -2,6 +2,7 @@ import uuid
 from typing import Annotated
 
 from fastapi import APIRouter, Depends
+from pydantic import EmailStr
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.base.base_response import BaseResponse, ErrorResponse
@@ -105,7 +106,7 @@ async def login(data: AuthLogin, db: AsyncSession = Depends(async_get_db)):
 
 
 @router.get("/reset-password", response_model=BaseResponse)
-async def reset_password(email: str, db: AsyncSession = Depends(async_get_db)):
+async def reset_password(email: EmailStr, db: AsyncSession = Depends(async_get_db)):
     user = await get_user_by_email_query(db, email)
     if user is None:
         return BaseResponse(

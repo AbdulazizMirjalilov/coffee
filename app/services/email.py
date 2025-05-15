@@ -1,5 +1,4 @@
 import asyncio
-import logging
 import os
 
 import sib_api_v3_sdk
@@ -47,7 +46,7 @@ async def send_email(
         try:
             api_instance.send_transac_email(email_data)
         except ApiException as e:
-            logging.warn(f"Exception when calling API: {e}\n")
+            print(f"Exception when calling API: {e}\n")
 
     await asyncio.to_thread(_send_email)
 
